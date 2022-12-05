@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const { default: mongoose } = require('mongoose');
 require('dotenv').config();
 
+const UserRoute = require('./Routes/UserRoute.js');
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -32,6 +34,7 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
     res.send("Server is running");
 })
+app.use('/api/v1/auth/user', UserRoute);
 
 
 /* This is a catch-all route that will catch any request that doesn't match any of the other routes. */
